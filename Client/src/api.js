@@ -1,6 +1,6 @@
 // const API_URL = import.meta.env.VITE_API_URL;
-const API_URL = 'http://localhost:5000/api';
-// const API_URL = 'https://digimart-visg.onrender.com/api';
+// const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://digimart-visg.onrender.com/api';
 
 // Register a new user
 export async function registerUser(data) {
