@@ -9,8 +9,8 @@ export default function UPIPaymentModal({ total, items, onClose, onConfirm }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const upiId = '8988344879@ptsbi';
-
+  const upiId = '9100000000@ptsbi';
+  
   const copyUpiId = () => {
     navigator.clipboard.writeText(upiId);
     window.showNotification?.('UPI ID copied to clipboard', 'success');
