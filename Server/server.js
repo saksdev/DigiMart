@@ -20,10 +20,16 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/products', productRoutes);
 
+const cors = require('cors');
+app.use(cors({
+  origin: ['https://your-frontend.netlify.app'],
+  credentials: true,
+}));
+
+
 app.get("/", (req, res) => {
   res.send("DigiMart API is Live");
 });
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
