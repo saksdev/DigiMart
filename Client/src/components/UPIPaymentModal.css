@@ -1,0 +1,418 @@
+/* E:\Payment\Frontend\src\components\UPIPaymentModal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100; /* Higher than cart (1000) and header (1000) */
+  padding: 1rem;
+}
+
+.modal-container {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 450px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-in;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  background: linear-gradient(90deg, #16a34a, #2563eb); /* Green to blue gradient */
+  padding: 1.5rem;
+  position: relative;
+  color: #fff;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal-total {
+  font-size: 0.875rem;
+  color: #d1fae5; /* Light green for contrast */
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.close-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.step-one {
+  text-align: center;
+}
+
+.qr-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code {
+  width: 128px;
+  height: 128px;
+}
+
+.qr-instruction {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.upi-details {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.upi-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.upi-id {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  font-family: monospace;
+}
+
+.copy-button {
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.copy-button:hover {
+  background: #e5e7eb;
+}
+
+.copy-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.copy-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #7c3aed;
+}
+
+.action-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(90deg, #16a34a, #2563eb);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+  background: linear-gradient(90deg, #15803d, #1d4ed8);
+  transform: scale(1.02);
+}
+
+.action-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.step-two {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.transaction-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.transaction-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #111827;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+  outline: none;
+}
+
+.input-hint {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.back-button {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #374151;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover {
+  background: #f3f4f6;
+}
+
+.back-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.confirm-button {
+  flex: 1;
+  padding: 0.75rem;
+  background: linear-gradient(90deg, #16a34a, #2563eb);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-button:hover {
+  background: linear-gradient(90deg, #15803d, #1d4ed8);
+  transform: scale(1.02);
+}
+
+.confirm-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.confirm-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-success {
+  padding: 2rem;
+  text-align: center;
+  animation: zoomIn 0.3s ease-in;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-content {
+  margin-bottom: 1.5rem;
+}
+
+.success-icon-container {
+  width: 64px;
+  height: 64px;
+  background: #dcfce7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.success-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #16a34a;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.success-text {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.transaction-details {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.transaction-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.transaction-id {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  font-family: monospace;
+}
+
+.success-note {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.modal-processing {
+  padding: 2rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 4px solid #e5e7eb;
+  border-top-color: #7c3aed;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.processing-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.processing-text {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+@media (min-width: 768px) {
+  .modal-overlay {
+    padding: 1.5rem;
+  }
+
+  .modal-container {
+    max-width: 500px;
+  }
+}

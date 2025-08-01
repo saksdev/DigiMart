@@ -1,0 +1,177 @@
+/* E:\Payment\Frontend\src\components\UserDashboard.css */
+.dashboard-container {
+  min-height: 100vh;
+  padding: 6rem 1rem 2rem; /* Top padding accounts for fixed header */
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #f9fafb; /* Light background for consistency */
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.purchases-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.no-purchases {
+  font-size: 1.125rem;
+  color: #6b7280;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.loading {
+  font-size: 1.125rem;
+  color: #6b7280;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.purchases-table {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.purchases-table th,
+.purchases-table td {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  color: #111827;
+}
+
+.purchases-table th {
+  font-weight: 600;
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.purchases-table tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s ease;
+}
+
+.purchases-table tr:last-child {
+  border-bottom: none;
+}
+
+.purchases-table tr:hover {
+  background: #f9fafb;
+}
+
+.download-button {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(90deg, #7c3aed, #2563eb); /* Purple to blue gradient */
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.download-button:hover {
+  background: linear-gradient(90deg, #6d28d9, #1d4ed8);
+  transform: scale(1.02);
+}
+
+.download-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.download-link {
+  text-decoration: none;
+}
+
+.pending-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+@media (min-width: 768px) {
+  .dashboard-container {
+    padding: 6rem 1.5rem 2rem;
+  }
+
+  .purchases-table {
+    padding: 0 2rem;
+  }
+
+  .purchases-table th,
+  .purchases-table td {
+    padding: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .dashboard-title {
+    font-size: 2.5rem;
+  }
+
+  .purchases-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .purchases-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .purchases-table thead,
+  .purchases-table tbody,
+  .purchases-table tr,
+  .purchases-table th,
+  .purchases-table td {
+    display: block;
+  }
+
+  .purchases-table thead {
+    display: none; /* Hide header on mobile */
+  }
+
+  .purchases-table tr {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .purchases-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: none;
+  }
+
+  .purchases-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #374151;
+    width: 40%;
+  }
+
+  .purchases-table td:last-child {
+    justify-content: center;
+  }
+}
