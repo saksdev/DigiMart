@@ -1,5 +1,5 @@
 | Admin Login: |
-|---------------|
+|---------------|-------|
 | Email | Admin@gmail.com |
 | Password | Admin |
 
