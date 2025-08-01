@@ -1,6 +1,8 @@
-Admin Login:
-Email: Admin@gmail.com
-Password: Admin
+| Admin Login: |
+|---------------|
+| Email | Admin@gmail.com |
+| Password | Admin |
+
 
 # 🚀 DigiMart
 
