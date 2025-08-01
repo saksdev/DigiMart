@@ -6,7 +6,7 @@ import {
   createProduct,
   updateProduct,
 } from '../api';
-import './AdminDashboard.css';
+import './Css/AdminDashboard.css';
 
 const API_URL = 'http://localhost:5000/api';
 

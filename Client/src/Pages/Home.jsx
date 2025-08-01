@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Wrench, ShoppingCart, Star, Shield } from 'lucide-react';
-import './Home.css';
+import './Css/Home.css';
 
 export default function Home() {
   return (

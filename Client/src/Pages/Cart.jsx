@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ShoppingCart, X, CreditCard } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import './Cart.css';
+import './Css/Cart.css';
 
 export default function Cart({ items, onUpdateQuantity, onRemove, onCheckout, onClose }) {
   // Calculate total considering discounts

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, LogOut, User, LogIn, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import './Header.css';
+import './Css/Header.css';
 
 export default function Header({ user, onLogout, cartCount = 0, onCartOpen }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

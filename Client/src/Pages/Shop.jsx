@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchProducts } from '../api';
 import { ShoppingCart, Info } from 'lucide-react';
-import './Shop.css';
+import './Css/Shop.css';
 
 export default function Shop({ user, onAddToCart }) {
   const [products, setProducts] = useState([]);

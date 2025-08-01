@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchProducts } from '../api';
 import { ShoppingCart } from 'lucide-react';
-import './Product.css';
+import './Css/Product.css';
 
 export default function Product({ user, onAddToCart }) {
   const { id } = useParams();

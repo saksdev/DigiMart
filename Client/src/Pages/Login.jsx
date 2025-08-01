@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { loginUser } from '../api';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
-import './auth.css';
+import './Css/auth.css';
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState('');

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Flipper, Flipped } from "react-flip-toolkit";
-import "./NotificationCenter.css";
+import "./Css/NotificationCenter.css";
 
 export default function NotificationCenter() {
   const [notes, setNotes] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CreditCard, X, QrCode, Copy, CheckCircle } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-import './UPIPaymentModal.css';
+import './Css/UPIPaymentModal.css';
 
 export default function UPIPaymentModal({ total, items, onClose, onConfirm }) {
   const [step, setStep] = useState(1);

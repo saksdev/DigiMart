@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchDashboardData } from '../api';
-import './UserDashboard.css';
+import './Css/UserDashboard.css';
 
 export default function UserDashboard({ user }) {
   const [data, setData] = useState(null);

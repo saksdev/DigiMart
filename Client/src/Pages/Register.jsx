@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { registerUser } from '../api';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, Mail, Lock, ArrowRight } from 'lucide-react';
-import './auth.css';
+import './Css/auth.css';
 
 export default function Register() {
   const [email, setEmail] = useState('');
