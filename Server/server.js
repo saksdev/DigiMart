@@ -20,12 +20,6 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/products', productRoutes);
 
-const cors = require('cors');
-app.use(cors({
-  origin: ['https://your-frontend.netlify.app'],
-  credentials: true,
-}));
-
 
 app.get("/", (req, res) => {
   res.send("DigiMart API is Live");
@@ -33,3 +27,21 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+// Add CROS For Work in Render
+const cors = require('cors');
+app.use(cors({
+  origin: ['https://your-frontend.netlify.app'],
+  credentials: true,
+}));
+
+
+const path = require('path');
+
+// Serve static files from React frontend
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+
+// This will handle all unknown routes (like /shop, /cart, etc.)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
