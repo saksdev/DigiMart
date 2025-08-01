@@ -336,7 +336,8 @@
   .header-right {
     gap: 0.8rem;
   }
-}) {
+}
+@media (min-width: 768px) {
   .cart-button span {
     display: inline-block;
   }
