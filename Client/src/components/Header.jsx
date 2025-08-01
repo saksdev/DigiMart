@@ -41,7 +41,7 @@ export default function Header({ user, onLogout, cartCount = 0, onCartOpen }) {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Link to="/" className="header-logo">
-              ToolShop
+              DIGIMART
             </Link>
           </motion.div>
           <motion.nav 
