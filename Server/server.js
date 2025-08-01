@@ -36,10 +36,10 @@ app.use(cors({
   credentials: true,
 }));
 
-// Serve static files from React frontend
+// Serve static files from frontend
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
-// This will handle all unknown routes (like /shop, /cart, etc.)
+// Catch-all route for React Router
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
 });
