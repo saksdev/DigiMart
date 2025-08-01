@@ -1,3 +1,7 @@
+Admin Login:
+Email: Admin@gmail.com
+Password: Admin
+
 # 🚀 DigiMart
 
 **DigiMart** is a full-stack e-commerce platform tailored for selling **digital products** like tools, themes, and downloadable assets. It includes a powerful **admin panel**, a **manual UPI payment system** with QR code integration, and a personalized **user dashboard**. Payment verification is handled securely by admins, eliminating the need for third-party gateways.
