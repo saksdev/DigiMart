@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import {
   fetchDashboardData,
   approvePayment,
+  rejectPayment,
   deleteProduct,
   createProduct,
   updateProduct,
+  fetchPendingPayments,
+  fetchApprovedPayments,
 } from '../api';
 import './Css/AdminDashboard.css';
-
-const API_URL = 'http://localhost:5000/api';
 
 export default function AdminDashboard({ user }) {
   const [activeTab, setActiveTab] = useState('products');
@@ -22,6 +23,7 @@ export default function AdminDashboard({ user }) {
   useEffect(() => {
     if (!user?.isAdmin) return;
 
+    // Fetch dashboard data
     fetchDashboardData(user.token)
       .then((res) => {
         if (res?.isAdmin) {
@@ -36,19 +38,15 @@ export default function AdminDashboard({ user }) {
       })
       .finally(() => setLoading(false));
 
-    fetch(`${API_URL}/admin/payments/pending`, {
-      headers: { Authorization: `Bearer ${user.token}` },
-    })
-      .then((res) => res.json())
+    // Fetch pending payments
+    fetchPendingPayments(user.token)
       .then((payments) => setPendingPayments(payments || []))
       .catch(() => {
         window.showNotification?.('Error fetching pending payments', 'error');
       });
 
-    fetch(`${API_URL}/admin/payments/approved`, {
-      headers: { Authorization: `Bearer ${user.token}` },
-    })
-      .then((res) => res.json())
+    // Fetch approved payments
+    fetchApprovedPayments(user.token)
       .then((payments) => setApprovedPayments(payments || []))
       .catch(() => {
         window.showNotification?.('Error fetching approved payments', 'error');
@@ -61,10 +59,8 @@ export default function AdminDashboard({ user }) {
       setPendingPayments((prev) => prev.filter((p) => p._id !== paymentId));
       window.showNotification?.('Payment approved', 'success');
 
-      const res = await fetch(`${API_URL}/admin/payments/approved`, {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
-      const payments = await res.json();
+      // Refresh approved payments list
+      const payments = await fetchApprovedPayments(user.token);
       setApprovedPayments(payments || []);
     } catch (err) {
       window.showNotification?.('Failed to approve payment', 'error');
@@ -73,15 +69,7 @@ export default function AdminDashboard({ user }) {
 
   async function handleReject(paymentId) {
     try {
-      const res = await fetch(`${API_URL}/admin/payments/${paymentId}/reject`, {
-        method: 'PUT',
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to reject payment');
-      }
-
+      await rejectPayment(paymentId, user.token);
       setPendingPayments((prev) => prev.filter((p) => p._id !== paymentId));
       window.showNotification?.('Payment rejected', 'info');
     } catch (err) {
@@ -114,6 +102,7 @@ export default function AdminDashboard({ user }) {
         downloadLink: form.downloadLink,
         discount: Number(form.discount) || 0,
       };
+      
       if (editingProduct) {
         const updated = await updateProduct(editingProduct._id, productData, user.token);
         setData((prev) => ({

@@ -41,7 +41,7 @@ export async function fetchProducts() {
 // Submit UPI payment reference (user uploads referenceId + cart)
 export async function submitPayment(reference, amount, productIds, token) {
   try {
-    const res = await fetch(`${API_URL}/payments/submit`, { // ✅ Correct endpoint
+    const res = await fetch(`${API_URL}/payments/submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -134,6 +134,24 @@ export async function approvePayment(paymentId, token) {
   }
 }
 
+// Reject a user's payment (admin only)
+export async function rejectPayment(paymentId, token) {
+  try {
+    const res = await fetch(`${API_URL}/admin/payments/${paymentId}/reject`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!res.ok) {
+      throw new Error('Failed to reject payment');
+    }
+    return await res.json();
+  } catch (err) {
+    return { success: false, message: 'Payment rejection failed.' };
+  }
+}
+
 // Fetch all pending payments (admin only)
 export async function fetchPendingPayments(token) {
   try {
@@ -145,6 +163,20 @@ export async function fetchPendingPayments(token) {
     return await res.json();
   } catch (err) {
     return { success: false, message: 'Failed to fetch pending payments.' };
+  }
+}
+
+// Fetch all approved payments (admin only)
+export async function fetchApprovedPayments(token) {
+  try {
+    const res = await fetch(`${API_URL}/admin/payments/approved`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return await res.json();
+  } catch (err) {
+    return { success: false, message: 'Failed to fetch approved payments.' };
   }
 }
 
